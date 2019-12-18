@@ -1,0 +1,81 @@
+
+.content{
+  margin: 100px;
+  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.content:hover{
+  cursor: pointer;
+}
+
+.content:hover .record{
+  transform: translateX(130px) rotate(50deg);
+}
+
+.record {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 290px; height: 290px;
+  border-radius: 50%;
+  background:
+    linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0,
+    linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%,
+    repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+  background-size: 50% 100%, 100% 50%, 100% 100%;
+  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.24);
+}
+
+.record:after {
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: -35px;
+  border: solid 1px #d9a388;
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #da5b33,
+  inset 0 0 0 27px #da5b33;
+  background: #b5ac9a;
+  content: '';
+}
+
+.cover-shadow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.24);
+}
+
+.cover{
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffa946;
+  text-align: center;
+  align-content: center;
+  width: inherit;
+  height: inherit;
+}
+
+p{
+  font-size: 1.5em;
+  color: white;
+}
+
+.content:hover .cover-shadow{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.content:hover .record{
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.25), 0 3px 10px rgba(0,0,0,0.22);
+}
+
+
