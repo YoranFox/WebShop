@@ -1,9 +1,11 @@
 
+
+
 .content{
   margin: 100px;
   transition: all 0.5s cubic-bezier(.25,.8,.25,1);
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   position: relative;
 }
 
@@ -12,14 +14,14 @@
 }
 
 .content:hover .record{
-  transform: translateX(130px) rotate(50deg);
+  transform: translateX(45%) rotate(50deg);
 }
 
 .record {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 290px; height: 290px;
+  top: 5%;
+  left: 5%;
+  width: 90%; height: 90%;
   border-radius: 50%;
   background:
     linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0,

@@ -1,0 +1,32 @@
+.navbar{
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon{
+  display: inline-block;
+  height: 100%;
+}
+
+.account{
+}
+
+.account-icon{
+  height: 100%;
+  width: 50px;
+  fill: #cfc8d0;
+
+}
+
+.account-icon svg *{
+  fill: white;
+}
+
