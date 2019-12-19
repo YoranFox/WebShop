@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { GenreCardComponent } from './genre/genre-card/genre-card.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HomePageComponent } from './Pages/home-page/home-page.component';
     HomePageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

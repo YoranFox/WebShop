@@ -13,20 +13,31 @@
 
 .icon{
   display: inline-block;
+  padding: 0 10px;
+  width: 50px;
   height: 100%;
 }
 
-.account{
+.icon:hover{
+  transition-duration: 0.1s;
+  cursor: pointer;
+  box-shadow: inset 0 -5px 0 #cfc8d0;
+}
+
+.account-container{
 }
 
 .account-icon{
-  height: 100%;
-  width: 50px;
-  fill: #cfc8d0;
-
+  transform: scale(0.7);
 }
 
-.account-icon svg *{
-  fill: white;
+.cart-icon{
+  transform: scale(1);
+}
+
+svg{
+  width: 100%;
+  height: 100%;
+  fill: #cfc8d0;
 }
 
