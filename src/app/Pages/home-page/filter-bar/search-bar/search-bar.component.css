@@ -1,0 +1,160 @@
+
+
+.tb
+{
+  display: table;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.td
+{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+input, a
+{
+  color: #fff;
+  font-family: Nunito;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+#cover
+{
+
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #404040;
+}
+
+
+
+
+input[type="text"]
+{
+  margin-left: 5%;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  outline: none;
+  border-bottom-color: white;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  width: 93%;
+  height: 60%;
+  line-height: 1;
+}
+
+input[type="text"]::placeholder
+{
+  color: #757575;
+}
+
+input:placeholder-shown{  border-bottom-color: #7c7c7c;}
+input:focus{border-bottom-color: white;}
+
+#s-cover
+{
+  cursor: pointer;
+}
+
+a
+{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 60%;
+
+}
+
+#s-circle
+{
+  left: 25%;
+  top: 0;
+  position: absolute;
+  width: 20%;
+  padding-top: 20%;
+  margin: 0;
+  border: 5px solid #fff;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: 0.2s ease all;
+}
+
+a span
+{
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  display: block;
+  width: 30%;
+  height: 5px;
+  background-color: transparent;
+  border-radius: 2px;
+  transform: rotateZ(45deg);
+  transition: 0.2s ease all;
+}
+
+a span:before, a span:after
+{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #fff;
+  border-radius: 10px;
+  transform: rotateZ(0);
+  transition: 0.2s ease all;
+}
+
+/*#s-cover:hover{*/
+/*  transition: 0.2s ease all;*/
+/*  background-color: #6d6d6d;*/
+/*}*/
+
+#s-cover:hover #s-circle
+{
+  width: 40%;
+  height: 5px;
+  top: 50%;
+  padding-top: 0;
+  transform: translateY(-50%);
+  border-width: 0;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+#s-cover:hover span
+{
+  width: 25%;
+  top: 50%;
+  left: 55%;
+  transform: rotateZ(0) translateY(-50%);
+}
+
+#s-cover:hover a span:before
+{
+  bottom:calc(var(--arrow-width));
+  transform: rotateZ(45deg);
+}
+
+#s-cover:hover a span:after
+{
+  bottom:calc(var(--arrow-width) * -1);
+  transform: rotateZ(-45deg);
+}
+#s-cover:hover a span:before, #s-cover:hover a span:after
+{
+  right: -6px;
+  width: 100%;
+  background-color: #fff;
+}

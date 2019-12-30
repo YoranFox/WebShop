@@ -1,0 +1,29 @@
+div{
+  width: 100%;
+  min-height: 50px;
+  height: 3.5vw;
+  margin: auto;
+  background-color: #404040;
+}
+
+ul{
+  list-style: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+}
+
+li{
+  height: 100%;
+  float: none;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  flex: 1;
+  background-color: #7c7c7c;
+}

@@ -1,7 +1,4 @@
-.banner-container{
+img{
   width: 100%;
-}
-
-.banner-picture{
-  width: 100%;
+  display: block;
 }

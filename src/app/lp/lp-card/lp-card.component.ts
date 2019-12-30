@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
-  selector: 'app-genre-card',
-  templateUrl: './genre-card.component.html',
-  styleUrls: ['./genre-card.component.css'],
+  selector: 'app-lp-card',
+  templateUrl: './lp-card.component.html',
+  styleUrls: ['./lp-card.component.css'],
   animations: [
     trigger(
       'lpActions',[
@@ -27,8 +27,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 
   ])]
 })
-export class GenreCardComponent implements OnInit {
-  state : String;
+export class LpCardComponent implements OnInit {
+  state: String;
   constructor() { }
 
   ngOnInit() {
@@ -68,6 +68,5 @@ export class GenreCardComponent implements OnInit {
       }
 
     }
-    console.log(this.state)
   }
 }
