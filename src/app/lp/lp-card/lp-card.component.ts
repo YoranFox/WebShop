@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {LpModel} from '../../Shared/Models/lp-model';
+import {MusicService} from '../../Shared/Services/music.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-lp-card',
@@ -18,27 +21,50 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
           transform: 'translateX(55%) rotate(60deg)'
         })),
         state('clicked-lp', style({
-          transform: 'translateX(550%) rotate(600deg)'
+          transform: 'translateX(200%) rotate(300deg)'
         })),
-
         transition('* => clicked-lp',[animate('1s cubic-bezier(.25,.8,.25,1)')]),
         transition('hover-card => hover-lp',[animate('0.2s cubic-bezier(.25,.8,.25,1)')]),
         transition('* => *',[animate('0.3s cubic-bezier(.25,.8,.25,1)')]),
 
   ])]
 })
+
+
 export class LpCardComponent implements OnInit {
+  private subscription: Subscription;
+  @Input() lp: LpModel;
   state: String;
-  constructor() { }
+  musicService : MusicService;
+  constructor(ms: MusicService) {
+    this.musicService = ms;
+    this.subscription = ms.getEmittedValue().subscribe(item => this.checkIfValid(item));
+  }
+
 
   ngOnInit() {
+  }
+
+  checkIfValid(item : string){
+    if(item != this.lp.demoLink + '?autoplay=1&mute=1'){
+      this.state = 'default';
+    }
+    else{
+      this.state = 'clicked-lp';
+    }
   }
 
   changeState(state: string) {
     switch(state) {
       case 'lp-click': {
-        if(this.state == 'hover-lp') this.state = 'clicked-lp';
-        else this.state = 'default';
+        if(this.state == 'hover-lp'){
+          this.state = 'clicked-lp';
+          this.musicService.setDemoUrl(this.lp.demoLink)
+        }
+        else{
+          this.state = 'default';
+          this.musicService.setDemoUrl(null);
+        }
         break;
       }
       case 'lp-leave': {

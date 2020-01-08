@@ -1,4 +1,5 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {SortingService} from '../../../../Shared/Services/sorting.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,10 +8,14 @@ import {Component, HostListener, Input, OnInit} from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  sortingService : SortingService;
+
   @Input() collapsed: boolean;
+  input: string;
 
-  constructor() {
 
+  constructor(ss : SortingService) {
+    this.sortingService = ss;
 
   }
 
@@ -24,6 +29,7 @@ export class SearchBarComponent implements OnInit {
     this.calculateSize();
   }
 
+
   calculateSize(){
     var height = document.getElementById("s-cover").clientHeight;
     document.getElementById("s-cover").style.width = height.toString() + 'px';
@@ -34,4 +40,7 @@ export class SearchBarComponent implements OnInit {
     document.getElementById("s-input").style.fontSize = height * .35 + 'px';
   }
 
+  filter(input: string) {
+    this.sortingService.setNameFilter(input);
+  }
 }

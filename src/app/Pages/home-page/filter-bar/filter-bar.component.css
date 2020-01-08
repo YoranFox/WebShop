@@ -1,10 +1,29 @@
 div{
   width: 100%;
   min-height: 50px;
+  max-height: 60px;
   height: 3.5vw;
   margin: auto;
   background-color: #404040;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
 }
+
+#container.static{
+  position: fixed;
+  z-index: 99;
+  top: 60px;
+}
+
+.filler{
+  display: none;
+}
+
+.filler.static{
+  display: block;
+  opacity: 0;
+}
+
+
 
 ul{
   list-style: none;
@@ -20,6 +39,7 @@ ul{
 }
 
 li{
+
   height: 100%;
   float: none;
   -webkit-flex: 1;
@@ -27,3 +47,4 @@ li{
   flex: 1;
   background-color: #7c7c7c;
 }
+

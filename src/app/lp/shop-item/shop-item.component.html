@@ -1,0 +1,11 @@
+<div class="item-content">
+  <span><p>{{lp.bandName}} - {{lp.albumName}}</p></span>
+  <div class="lp-container">
+    <app-lp-card [lp]="lp"></app-lp-card>
+  </div>
+  <ul>
+    <li id="condition"><p>{{lp.condition}}</p></li>
+    <li id="price"><p>€{{lp.price}}</p></li>
+    <li id="buy"><p>buy</p></li>
+  </ul>
+</div>

@@ -1,8 +1,8 @@
 <div id="cover">
   <div class="tb" >
-    <div class="td"><input id="s-input" type="text" placeholder="Search" required></div>
+    <div class="td"><input [(ngModel)]="input" id="s-input" type="text" placeholder="Search" required></div>
     <div class="td" id="s-cover">
-      <a>
+      <a (click)="filter(input)">
         <div id="s-circle"></div>
         <span id="s-arrow"></span>
       </a>

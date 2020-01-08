@@ -1,7 +1,8 @@
-<div class="content" (click)="changeState('card-click')" (mouseover)="changeState('card-hover')" (mouseleave)="changeState('card-leave')">
-  <div class="cover-shadow"></div>
-  <div class="record" (click)="changeState('lp-click')" (mouseenter)="changeState('lp-hover')" (mouseleave)="changeState('lp-leave')" [@lpActions]="state"></div>
-  <div class="cover">
-    <p>this is the card</p>
+<div class="container">
+  <div class="content" (click)="changeState('card-click')" (mouseover)="changeState('card-hover')" (mouseleave)="changeState('card-leave')">
+    <div class="cover-shadow"></div>
+    <div class="record" (click)="changeState('lp-click')" (mouseenter)="changeState('lp-hover')" (mouseleave)="changeState('lp-leave')" [@lpActions]="state"></div>
+    <div class="cover" [ngStyle]="{backgroundImage: 'url(../../../assets/' + lp.coverUrl +  ')', backgroundSize: 'cover'}">
+    </div>
   </div>
 </div>
