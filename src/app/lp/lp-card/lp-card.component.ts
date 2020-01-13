@@ -21,7 +21,7 @@ import {Subscription} from 'rxjs';
           transform: 'translateX(55%) rotate(60deg)'
         })),
         state('clicked-lp', style({
-          transform: 'translateX(200%) rotate(300deg)'
+          transform: 'translateX(calc(200% - 10px)) rotate(300deg)'
         })),
         transition('* => clicked-lp',[animate('1s cubic-bezier(.25,.8,.25,1)')]),
         transition('hover-card => hover-lp',[animate('0.2s cubic-bezier(.25,.8,.25,1)')]),
@@ -45,8 +45,8 @@ export class LpCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkIfValid(item : string){
-    if(item != this.lp.demoLink + '?autoplay=1&mute=1'){
+  checkIfValid(item : LpModel){
+    if(item != this.lp){
       this.state = 'default';
     }
     else{
@@ -59,11 +59,11 @@ export class LpCardComponent implements OnInit {
       case 'lp-click': {
         if(this.state == 'hover-lp'){
           this.state = 'clicked-lp';
-          this.musicService.setDemoUrl(this.lp.demoLink)
+          this.musicService.setDemoLp(this.lp)
         }
         else{
           this.state = 'default';
-          this.musicService.setDemoUrl(null);
+          this.musicService.setDemoLp(null);
         }
         break;
       }

@@ -1,8 +1,6 @@
 div{
   width: 100%;
-  min-height: 50px;
-  max-height: 60px;
-  height: 3.5vw;
+  height: 50px;
   margin: auto;
   background-color: #404040;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
@@ -11,10 +9,11 @@ div{
 #container.static{
   position: fixed;
   z-index: 99;
-  top: 60px;
+  top: 50px;
 }
 
 .filler{
+  height: 50px;
   display: none;
 }
 

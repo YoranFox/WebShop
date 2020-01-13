@@ -15,7 +15,7 @@ export class FilterBarComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-    if((document.documentElement.scrollTop + 60) > document.getElementById('filter-bar').offsetTop){
+    if((document.documentElement.scrollTop + 50) > document.getElementById('filter-bar').offsetTop){
       this.filterClass = 'static';
     }
     else{

@@ -4,11 +4,34 @@ import {SortingService} from '../../../Shared/Services/sorting.service';
 import {Subscription} from 'rxjs';
 import {FilterModel} from '../../../Shared/Models/filter-model';
 import {ApiService} from '../../../Shared/Services/api.service';
+import {animate, state, style, transition, trigger} from "@angular/animations";
+import {delay} from "rxjs/operators";
+
+function changeLoadingState(state : string) {
+  this.content_progress = state;
+}
 
 @Component({
   selector: 'app-lp-list',
   templateUrl: './lp-list.component.html',
   styleUrls: ['./lp-list.component.css']
+  // animations: [
+  //   trigger(
+  //     'loadingAnim',[
+  //       state('complete', style({
+  //         transform: 'translateX(0)'
+  //       })),
+  //       state('removing_items', style({
+  //         transform: 'translateX(-2000px)'
+  //       })),
+  //       state('loading_items', style({
+  //         transform: 'translateX(2000px)'
+  //       })),
+  //       transition('complete => removing_items',[animate('1s cubic-bezier(.25,.8,.25,1)')]),
+  //       transition('hover-card => hover-lp',[animate('0.2s cubic-bezier(.25,.8,.25,1)')]),
+  //       transition('* => *',[animate('0.3s cubic-bezier(.25,.8,.25,1)')]),
+  //
+  //     ])]
 })
 export class LpListComponent implements OnInit {
 
@@ -16,6 +39,7 @@ export class LpListComponent implements OnInit {
   private subscription: Subscription;
   private sortedList: LpModel[] = [];
   private apiService : ApiService;
+  content_progress : string = 'complete';
 
   constructor(ss : SortingService, as: ApiService) {
     this.apiService = as;
@@ -25,12 +49,26 @@ export class LpListComponent implements OnInit {
 
   }
 
-  filterContent(filter : FilterModel){
 
+  filterContent(filter : FilterModel){
+    this.content_progress = 'removing_items'
     this.apiService.refreshContent();
     let sortedList = this.filterName(filter.name);
     // filterGenre(filter.genre, sortedList);
-    this.sortedList = sortedList;
+
+
+    // function changeLoadingState(state : string) {
+    //   this["content_progress"] = state
+    // }
+
+    setTimeout(() => {
+      this.sortedList = sortedList;
+      this.content_progress = 'loading_items'
+    }, 1200);
+    setTimeout(() => {
+      this.content_progress = 'complete';
+    }, 1300);
+
   }
 
   filterName(input: string) {

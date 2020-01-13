@@ -18,8 +18,9 @@ import { FooterComponent } from './footer/footer.component';
 import {SortingService} from './Shared/Services/sorting.service';
 import {MusicService} from './Shared/Services/music.service';
 import {FormsModule} from '@angular/forms';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {ApiService} from './Shared/Services/api.service';
+import {InterceptorService} from "./Shared/Services/interceptor.service";
 
 
 @NgModule({
@@ -41,9 +42,14 @@ import {ApiService} from './Shared/Services/api.service';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+
   ],
-  providers: [MusicService, LoaderService, SortingService, HttpClient, ApiService],
+  providers: [MusicService, LoaderService, SortingService, HttpClient, ApiService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   entryComponents: [MusicDemoComponent]
 })

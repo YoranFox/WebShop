@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {LpModel} from "../Models/lp-model";
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,14 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class MusicService {
 
 
-  @Output() fire: EventEmitter<string> = new EventEmitter();
+  @Output() fire: EventEmitter<LpModel> = new EventEmitter();
+  private lp: LpModel;
 
   constructor(private _sanitizer: DomSanitizer) { }
 
-  setDemoUrl(url : string){
-    if(!url) url = '';
-    else url = url + '?autoplay=1&mute=1';
-    this.fire.emit(url);
+  setDemoLp(lp: LpModel){
+    this.fire.emit(lp);
+    this.lp = lp;
   }
 
   getEmittedValue() {

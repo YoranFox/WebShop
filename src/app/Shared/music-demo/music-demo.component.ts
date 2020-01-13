@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, Injectable, Input, OnInit, Output, 
 import {MusicService} from '../Services/music.service';
 import {Subscription} from 'rxjs';
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {LpModel} from "../Models/lp-model";
 
 @Component({
   selector: 'app-music-demo',
@@ -21,14 +22,15 @@ export class MusicDemoComponent implements OnInit {
 
   }
 
-  setUrl(url : string){
-    if (url == '') {
+  setUrl(lp : LpModel){
+    if (!lp) {
       this.playing = false;
+      this. url = '';
     }
     else{
       this.playing = true;
+      this.url = lp.demoLink + '?mute=1&autoplay=1';
     }
-    this.url = url;
   }
 
   ngOnInit() {

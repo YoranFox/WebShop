@@ -1,11 +1,24 @@
 <div class="item-content">
-  <span><p>{{lp.bandName}} - {{lp.albumName}}</p></span>
+  <div class="header">
+    <span class="title"><p>{{lp.bandName}} - {{lp.albumName}}</p></span>
+    <div class="quality">
+      <span >QUALITY</span>
+      <p>{{lp.condition}}</p>
+    </div>
+
+  </div>
   <div class="lp-container">
     <app-lp-card [lp]="lp"></app-lp-card>
   </div>
-  <ul>
-    <li id="condition"><p>{{lp.condition}}</p></li>
-    <li id="price"><p>€{{lp.price}}</p></li>
-    <li id="buy"><p>buy</p></li>
-  </ul>
+  <div class="footer">
+    <div class="buy_button">BUY</div>
+    <span class="price">€{{lp.price}}</span>
+  </div>
+
+
+<!--  <ul>-->
+<!--    <li id="condition"><p>{{lp.condition}}</p></li>-->
+<!--    <li id="price"><p>€{{lp.price}}</p></li>-->
+<!--    <li id="buy"><p>buy</p></li>-->
+<!--  </ul>-->
 </div>

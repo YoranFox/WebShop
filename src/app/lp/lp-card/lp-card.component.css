@@ -1,8 +1,24 @@
 .container{
   width: 90%;
   margin: auto;
+  display: flex;
 }
 
+img{
+  margin-top: 18%;
+  margin-left: 15%;
+  height: 4vw;
+  display: none;
+  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+}
+
+.hover-lp, .hover-card{
+  display: block;
+}
+
+.hover-lp{
+  margin-left: 17%;
+}
 
 .content{
   transition: all 0.5s cubic-bezier(.25,.8,.25,1);
