@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LpModel} from '../../Shared/Models/lp-model';
-import {MusicDemoComponent} from '../../Shared/music-demo/music-demo.component';
+import {ShoppingCartService} from '../../Shared/Services/shopping-cart.service';
 
 @Component({
   selector: 'app-shop-item',
@@ -11,11 +11,16 @@ export class ShopItemComponent implements OnInit {
   @Input() lp: LpModel;
 
 
-  constructor() {
+  constructor(public cartService : ShoppingCartService) {
 
   }
 
   ngOnInit() {
   }
 
+  addToShoppingCart(){
+    if(this.cartService.addToShoppingCart(this.lp)){
+
+    }
+  }
 }

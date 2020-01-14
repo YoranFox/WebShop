@@ -13,12 +13,12 @@ export class InterceptorService implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("intercept!");
-    request = request.clone({
-      setHeaders: {
-        Authorization: localStorage.getItem('session_cookie')
-      }
-    });
+    let auth = localStorage.getItem('session_cookie');
+    if(auth){
+      request = request.clone({
+        headers: request.headers.set('Authorization', auth)
+      });
+    }
     return next.handle(request);
   }
 }

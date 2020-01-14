@@ -16,12 +16,12 @@ export class ShoppingCartService {
     this.apiService = as;
   }
 
-  private addToShoppingCart(lp: LpModel){
-    this.lpList.push(lp);
-    this.fire.emit(this.lpList);
-  }
-
-  public requestItemHold(lp: LpModel){
-
+  public addToShoppingCart(lp: LpModel) : boolean{
+    if(this.apiService.requestItemHold(lp.id)){
+      this.lpList.push(lp);
+      this.fire.emit(this.lpList);
+      return true
+    }
+    return false;
   }
 }

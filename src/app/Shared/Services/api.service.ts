@@ -11,16 +11,15 @@ import {SessionModel} from "../Models/session-model";
 export class ApiService {
   apiURL = 'http://localhost:8080/'
   test : Observable<any>;
+  session: any;
 
   constructor(private http: HttpClient) {
     let token = localStorage.getItem('session_cookie');
-    console.log('stored token', token)
-    this.getSessionToken(new SessionModel(token)).subscribe((data) => {
-
-      console.log('token',(<SessionModel>data).token);
-      localStorage.setItem('session_cookie', (<SessionModel>data).token);
+    this.getSessionToken(token).subscribe(data => {
+      this.session = data;
+      console.log(this.session);
+      localStorage.setItem('session_cookie', JSON.stringify(data));
     });
-
     this.refreshContent();
   }
 
@@ -36,16 +35,29 @@ export class ApiService {
     return throwError(errorMessage);
   }
 
-  getSessionToken(token : SessionModel): Observable<any>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'token': token.token
-      })
-    };
-    return this.http.get(this.apiURL + 'session/connect', httpOptions)
+  getSessionToken(token : any): Observable<any>{
+    let params = new HttpHeaders()
+      .set("token", token)
+    return this.http.get(this.apiURL + 'session/connect', {headers: params})
       .pipe(
         retry(1),
         catchError(this.handleError)
+      )
+  }
+
+  requestItemHold(itemId: string) : any{
+    let params = new HttpHeaders({
+      "item": itemId,
+      "session": this.session.sessionId
+    });
+
+    this.http.get(this.apiURL + 'shop/item/hold', {headers: params})
+      .pipe(
+        retry(1),
+        catchError(this.handleError))
+      .subscribe((data) => {
+          return data;
+        }
       )
   }
 
