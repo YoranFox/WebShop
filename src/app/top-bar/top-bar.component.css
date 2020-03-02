@@ -4,7 +4,6 @@
   height: 50px;
   width: 100vw;
   overflow: hidden;
-  background-color: #333;
   position: fixed;
   top: 0;
   display: flex;
@@ -22,7 +21,6 @@
 .icon:hover{
   transition-duration: 0.1s;
   cursor: pointer;
-  box-shadow: inset 0 -5px 0 #cfc8d0;
 }
 
 .account-container{
@@ -39,7 +37,7 @@
 svg{
   width: 100%;
   height: 100%;
-  fill: #cfc8d0;
+  fill: #6f6b70;
 }
 .collapsed{
   width: 20%;

@@ -1,0 +1,11 @@
+<div [ngClass]="{'overlay': true,'blurring': cartVisible, 'hidden': !cartVisible}"></div>
+
+<div [ngClass]="{'content': true, 'visible': cartVisible}">
+  <div class="side"><button (click)="hideCart()">x</button></div>
+  <div class="cart-container">
+    <p>Shopping cart</p>
+    <app-item-list></app-item-list>
+    <button>Complete</button>
+  </div>
+</div>
+

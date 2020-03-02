@@ -21,6 +21,8 @@ import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {ApiService} from './Shared/Services/api.service';
 import {InterceptorService} from "./Shared/Services/interceptor.service";
+import { ItemListComponent } from './Item-cart/item-list/item-list.component';
+import { ItemCartComponent } from './Item-cart/item-cart.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import {InterceptorService} from "./Shared/Services/interceptor.service";
     LoginComponent,
     MusicDemoComponent,
     SafePipe,
-    FooterComponent
+    FooterComponent,
+    ItemListComponent,
+    ItemCartComponent
   ],
   imports: [
     BrowserModule,

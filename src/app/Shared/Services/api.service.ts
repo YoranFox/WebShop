@@ -15,9 +15,9 @@ export class ApiService {
 
   constructor(private http: HttpClient) {
     let token = localStorage.getItem('session_cookie');
+    if(!token) token = "null";
     this.getSessionToken(token).subscribe(data => {
       this.session = data;
-      console.log(this.session);
       localStorage.setItem('session_cookie', JSON.stringify(data));
     });
     this.refreshContent();
@@ -36,8 +36,12 @@ export class ApiService {
   }
 
   getSessionToken(token : any): Observable<any>{
-    let params = new HttpHeaders()
-      .set("token", token)
+    let params = new HttpHeaders({'token': 'null'});
+    if(token) {
+      params = new HttpHeaders({
+        'token': token,
+      });
+    }
     return this.http.get(this.apiURL + 'session/connect', {headers: params})
       .pipe(
         retry(1),
@@ -50,8 +54,7 @@ export class ApiService {
       "item": itemId,
       "session": this.session.sessionId
     });
-
-    this.http.get(this.apiURL + 'shop/item/hold', {headers: params})
+    this.http.get(this.apiURL + 'shop/cart/hold', {headers: params})
       .pipe(
         retry(1),
         catchError(this.handleError))
@@ -93,10 +96,16 @@ export class ApiService {
 
   refreshContent() {
     this.test = this.createResourceObservable('shop/lp/test');
-
   }
 
   getCurrentToken() {
     return localStorage.getItem('session_cookie');
+  }
+
+  removeItemHold(id: string) {
+    this.http.post(this.apiURL + 'shop/cart/remove', id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError))
   }
 }

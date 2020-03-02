@@ -1,5 +1,4 @@
 
-
 .tb
 {
   display: table;
@@ -16,7 +15,7 @@
 
 input, a
 {
-  color: #fff;
+  color: black;
   font-family: Nunito;
   padding: 0;
   margin: 0;
@@ -26,13 +25,12 @@ input, a
 
 #cover
 {
-
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: #404040;
+  background-color: white;
 }
 
 
@@ -44,9 +42,6 @@ input[type="text"]
   padding-bottom: 5px;
   padding-top: 5px;
   outline: none;
-  border-bottom-color: white;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
   width: 93%;
   height: 60%;
   line-height: 1;
@@ -58,12 +53,12 @@ input[type="text"]::placeholder
   color: #757575;
 }
 
-input:placeholder-shown{  border-bottom-color: #7c7c7c;}
-input:focus{border-bottom-color: white;}
 
 #s-cover
 {
+  padding-bottom: 5px;
   cursor: pointer;
+  transform: scale(0.8);
 }
 
 a
@@ -83,7 +78,7 @@ a
   width: 20%;
   padding-top: 20%;
   margin: 0;
-  border: 5px solid #fff;
+  border: 5px solid #757575;
   background-color: transparent;
   border-radius: 50%;
   transition: 0.2s ease all;
@@ -111,7 +106,7 @@ a span:before, a span:after
   right: 0;
   width: 100%;
   height: 5px;
-  background-color: #fff;
+  background-color: #757575;
   border-radius: 10px;
   transform: rotateZ(0);
   transition: 0.2s ease all;
@@ -130,7 +125,7 @@ a span:before, a span:after
   padding-top: 0;
   transform: translateY(-50%);
   border-width: 0;
-  background-color: #fff;
+  background-color: #757575;
   border-radius: 2px;
 }
 
@@ -159,5 +154,5 @@ a span:before, a span:after
 {
   right: -6px;
   width: 100%;
-  background-color: #fff;
+  background-color: #757575;
 }

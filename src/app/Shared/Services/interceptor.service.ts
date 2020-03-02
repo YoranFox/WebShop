@@ -14,9 +14,9 @@ export class InterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let auth = localStorage.getItem('session_cookie');
-    if(auth){
+    if(auth != "null" && auth != null){
       request = request.clone({
-        headers: request.headers.set('Authorization', auth)
+        headers: request.headers.set('authorization', auth)
       });
     }
     return next.handle(request);

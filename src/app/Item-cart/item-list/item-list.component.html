@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let item of itemsInCart">
+    <p class="name">{{item.bandName}} - {{item.albumName}}</p>
+    <p class="price">€{{item.price}}</p>
+    <button (click)="removeFromCart(item)">x</button>
+  </li>
+</ul>

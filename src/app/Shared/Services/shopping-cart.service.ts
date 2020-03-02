@@ -24,4 +24,13 @@ export class ShoppingCartService {
     }
     return false;
   }
+
+  removeFromShoppingCart(lp: LpModel) {
+    const index: number = this.lpList.indexOf(lp);
+    if (index !== -1) {
+      this.lpList.splice(index, 1);
+      this.fire.emit(this.lpList);
+    }
+    this.apiService.removeItemHold(lp.id);
+  }
 }

@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
   private subscription: Subscription;
   private musicService : MusicService;
   private loaderService : LoaderService;
+  collapsed: boolean = true;
 
   constructor(ms : MusicService) {
     this. musicService = ms;
@@ -23,6 +24,10 @@ export class HomePageComponent implements OnInit {
 
   change() {
 
+  }
+
+  toggleCart(){
+    this.collapsed = !this.collapsed;
   }
 
 
