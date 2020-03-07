@@ -1,4 +1,5 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit, ViewChild} from '@angular/core';
+import {ItemCartComponent} from '../../../Item-cart/item-cart.component';
 
 @Component({
   selector: 'app-filter-bar',
@@ -7,7 +8,10 @@ import {Component, HostListener, OnInit} from '@angular/core';
 })
 export class FilterBarComponent implements OnInit {
   filterClass : string = 'none';
+  @ViewChild(ItemCartComponent, {static: false}) child:ItemCartComponent;
 
+  @Input() collapsed: boolean;
+  cartCollapsed: boolean = true;
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +25,11 @@ export class FilterBarComponent implements OnInit {
     else{
       this.filterClass = 'none';
     }
+  }
+
+
+  showCart(){
+    this.child.showCart();
   }
 
 }

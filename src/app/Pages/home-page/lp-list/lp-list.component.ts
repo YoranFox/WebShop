@@ -87,7 +87,7 @@ export class LpListComponent implements OnInit {
 
   generateLps() {
 
-    this.apiService.test.subscribe((data)=>{
+    this.apiService.createResourceObservable('shop/lp/test').subscribe((data)=>{
       this.lpList = data;
       this.sortedList = this.lpList;
     });

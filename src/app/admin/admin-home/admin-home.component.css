@@ -1,0 +1,41 @@
+.container{
+  width: 100%;
+  min-height: 100vh;
+}
+
+ul{
+  top : 0;
+  list-style: none;
+  height: auto;
+  margin: 0;
+  justify-content: space-around;
+  padding: 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  align-items: center;
+}
+
+li{
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  float: none;
+  background-color: #3d507a;
+}
+
+li:hover{
+  transition-duration: 0.1s;
+  background-color: #3e6b96;
+  cursor: pointer;
+
+}
+
+a{
+  width: 100%;
+  font-size: 1.5em;
+  color: white;
+}

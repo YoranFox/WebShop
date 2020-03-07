@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="top-bar">
+    <ul>
+      <a [routerLink]="[{ outlets: {admin: ['orders'] } }]"><li>orders</li></a>
+      <a [routerLink]="[{ outlets: { admin: ['create'] } }]"><li>create product</li></a>
+    </ul>
+  </div>
+  <router-outlet name="admin"></router-outlet>
+</div>

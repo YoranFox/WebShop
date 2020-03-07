@@ -23,6 +23,16 @@ import {ApiService} from './Shared/Services/api.service';
 import {InterceptorService} from "./Shared/Services/interceptor.service";
 import { ItemListComponent } from './Item-cart/item-list/item-list.component';
 import { ItemCartComponent } from './Item-cart/item-cart.component';
+import { AdminComponent } from './admin/admin.component';
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing/app-routing-module.module';
+import construct = Reflect.construct;
+import {AdminLoginComponent} from './admin/login/login.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CreateProductComponent } from './admin/admin-home/create-product/create-product.component';
+import { OrdersViewComponent } from './admin/admin-home/orders-view/orders-view.component';
+
+
 
 
 @NgModule({
@@ -40,15 +50,20 @@ import { ItemCartComponent } from './Item-cart/item-cart.component';
     SafePipe,
     FooterComponent,
     ItemListComponent,
-    ItemCartComponent
+    ItemCartComponent,
+    AdminComponent,
+    AdminLoginComponent,
+    AdminHomeComponent,
+    CreateProductComponent,
+    OrdersViewComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        AppRoutingModule
+    ],
   providers: [MusicService, LoaderService, SortingService, HttpClient, ApiService, {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
@@ -57,4 +72,5 @@ import { ItemCartComponent } from './Item-cart/item-cart.component';
   bootstrap: [AppComponent],
   entryComponents: [MusicDemoComponent]
 })
+
 export class AppModule { }

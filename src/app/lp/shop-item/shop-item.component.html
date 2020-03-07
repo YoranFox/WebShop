@@ -11,7 +11,7 @@
     <app-lp-card [lp]="lp"></app-lp-card>
   </div>
   <div class="footer">
-    <div class="buy_button" (click)="addToShoppingCart()">BUY</div>
+    <div class="buy_button" (click)="addToShoppingCart()">{{inCart? "REMOVE" :"BUY"}}</div>
     <span class="price">€{{lp.price}}</span>
   </div>
 

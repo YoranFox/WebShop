@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LpModel} from '../../Shared/Models/lp-model';
 import {ShoppingCartService} from '../../Shared/Services/shopping-cart.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-shop-item',
@@ -13,15 +14,14 @@ export class ShopItemComponent implements OnInit {
 
   constructor(public cartService : ShoppingCartService) {
     this.cartService.fire.subscribe(item =>{
-      for(let i in item){
-        if((<any>i).id == this.lp.id){
-          this.inCart = true;
-        }
-      }
+      this.inCart = this.cartService.isInCart(this.lp);
       })
+
   }
 
   ngOnInit() {
+    this.inCart = this.cartService.isInCart(this.lp);
+    console.log(this.inCart);
   }
 
   addToShoppingCart(){

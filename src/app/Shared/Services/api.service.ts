@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {applySourceSpanToExpressionIfNeeded} from "@angular/compiler/src/output/output_ast";
 import {SessionModel} from "../Models/session-model";
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,19 @@ export class ApiService {
   test : Observable<any>;
   session: any;
 
-  constructor(private http: HttpClient) {
+
+
+  constructor(private http: HttpClient, private userService: UserService) {
+
+  }
+
+  init(){
     let token = localStorage.getItem('session_cookie');
     if(!token) token = "null";
     this.getSessionToken(token).subscribe(data => {
       this.session = data;
-      localStorage.setItem('session_cookie', JSON.stringify(data));
+      this.userService.placeUser(data);
     });
-    this.refreshContent();
   }
 
   //error handling
@@ -49,19 +55,14 @@ export class ApiService {
       )
   }
 
-  requestItemHold(itemId: string) : any{
+  requestItemHold(itemId: string) : Observable<any>{
     let params = new HttpHeaders({
-      "item": itemId,
-      "session": this.session.sessionId
+      "item": itemId
     });
-    this.http.get(this.apiURL + 'shop/cart/hold', {headers: params})
+    return this.http.get(this.apiURL + 'shop/cart/hold', {headers: params})
       .pipe(
         retry(1),
         catchError(this.handleError))
-      .subscribe((data) => {
-          return data;
-        }
-      )
   }
 
   //GET resource path
@@ -102,10 +103,32 @@ export class ApiService {
     return localStorage.getItem('session_cookie');
   }
 
-  removeItemHold(id: string) {
-    this.http.post(this.apiURL + 'shop/cart/remove', id)
+  removeItemHold(id: string): Observable<any>{
+    let params = new HttpHeaders({
+      "item": id
+    });
+    return this.http.get(this.apiURL + 'shop/cart/remove', {headers: params})
       .pipe(
         retry(1),
         catchError(this.handleError))
+  }
+
+  loginAdmin(pass: string) {
+    let params = new HttpHeaders({
+      "pass": pass,
+    });
+    return this.http.get(this.apiURL + 'admin/login', {headers: params})
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  getShoppingCartItems(): Observable<any> {
+    return this.http.get(this.apiURL + 'shop/cart/getAll')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
   }
 }
